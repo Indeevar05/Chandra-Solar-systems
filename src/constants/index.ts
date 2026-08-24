@@ -13,6 +13,8 @@ export const SITE = {
   phoneRaw: '+919603565222',
   whatsapp: '+91 96035 65222',
   whatsappRaw: '919603565222',
+  whatsappMessage:
+    "Hi Chandra Solar Systems, I'm interested in a solar installation. Please share details.",
   email: 'info@chandrasolarsystems.in',
   address: {
     line1: 'Shop No. 4, Karthikeya Heights',

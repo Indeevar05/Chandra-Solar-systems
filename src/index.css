@@ -8,15 +8,15 @@
   --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
 
   
-  --color-primary: #1C1C1C; 
-  --color-secondary: #F9F9F6; 
-  --color-accent: #B85B3F; 
-  --color-accent-hover: #9E4D35;
-  --color-green: #2C4C3B; 
-  --color-text: #1C1C1C;
-  --color-muted: #737373;
+  --color-primary: #14261C; 
+  --color-secondary: #F4F7F4; 
+  --color-accent: #2D6A4F; 
+  --color-accent-hover: #1B4332;
+  --color-green: #40916C; 
+  --color-text: #14261C;
+  --color-muted: #5C6B62;
   --color-surface: #FFFFFF;
-  --color-border: #E5E5E5;
+  --color-border: #D8E0DA;
 
   
   --shadow-xs: 0 1px 2px 0 rgba(28, 28, 28, 0.04);
@@ -36,10 +36,10 @@
 }
 
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -72,8 +72,8 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
 
 ::selection {
-  background: rgba(28, 28, 28, 0.1);
-  color: #1C1C1C;
+  background: rgba(45, 106, 79, 0.18);
+  color: #14261C;
 }
 
 
@@ -109,21 +109,21 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
 
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 56px;
+  padding-bottom: 56px;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 }
 
 @media (min-width: 1024px) {
   .section {
-    padding-top: 140px;
-    padding-bottom: 140px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 
@@ -146,8 +146,8 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
 @media (min-width: 1280px) {
   .container-custom {
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }
 
@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-primary);
+  background: var(--color-accent);
   transition: width 0.6s var(--ease-cinematic);
 }
 .animated-underline:hover::after {

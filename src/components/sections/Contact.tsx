@@ -56,22 +56,22 @@ export function Contact() {
   return (
     <section id="contact" className="section bg-[var(--color-secondary)]">
       <div className="container-custom">
-        <div className="mb-20 text-center">
-          <span className="text-[#1C1C1C] text-[10px] font-medium tracking-[0.3em] uppercase block mb-6">
+        <div className="mb-10 text-center">
+          <span className="text-[#1C1C1C] text-[10px] font-medium tracking-[0.3em] uppercase block mb-3">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif text-[#1C1C1C] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-serif text-[#1C1C1C] leading-tight">
             Start Your <span className="italic font-light text-[#737373]">Solar Journey</span>
           </h2>
         </div>
 
         <div ref={ref} className="max-w-6xl mx-auto">
-          {}
+          { }
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-[400px] lg:h-[600px] mb-20 relative"
+            className="w-full h-[220px] lg:h-[320px] mb-10 relative"
           >
             <div className="absolute inset-0 bg-[#E5E5E5] translate-x-4 -translate-y-4" />
             <img
@@ -81,32 +81,32 @@ export function Contact() {
             />
           </motion.div>
 
-          <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
-            {}
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
+            { }
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 flex flex-col gap-12"
+              className="lg:col-span-5 flex flex-col gap-8"
             >
               <div>
-                <h3 className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#B85B3F] mb-6">Headquarters</h3>
+                <h3 className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#2D6A4F] mb-6">Headquarters</h3>
                 <div className="text-xl font-serif text-[#1C1C1C] leading-relaxed mb-8">
                   {SITE.address.line1}<br />
                   {SITE.address.line2}<br />
                   {SITE.address.line3}<br />
                   {SITE.address.city}, {SITE.address.state}
                 </div>
-                
+
                 <div className="flex flex-col gap-4 text-sm text-[#737373] font-light">
-                  <p><strong className="text-[#1C1C1C] font-medium mr-2">Phone:</strong> {SITE.phone}</p>
+                  <p><strong className="text-[#1C1C1C] font-medium mr-2">Phone:</strong> <span className="tabular-nums tracking-normal">{SITE.phone}</span></p>
                   <p><strong className="text-[#1C1C1C] font-medium mr-2">Email:</strong> {SITE.email}</p>
                   <p><strong className="text-[#1C1C1C] font-medium mr-2">Hours:</strong> {SITE.workingHours.weekdays}, {SITE.workingHours.hours}</p>
                 </div>
               </div>
 
-              {}
-              <div className="w-full h-[300px] bg-[#E5E5E5]">
+              { }
+              <div className="w-full h-[220px] bg-[#E5E5E5]">
                 <iframe
                   src={SITE.mapEmbed}
                   width="100%"
@@ -121,44 +121,44 @@ export function Contact() {
               </div>
             </motion.div>
 
-            {}
+            { }
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 bg-white p-10 lg:p-16 shadow-sm border border-[#E5E5E5]"
+              className="lg:col-span-7 bg-white p-6 lg:p-8 shadow-sm border border-[#E5E5E5]"
             >
-              <h3 className="text-3xl font-serif text-[#1C1C1C] mb-8">Request a Proposal</h3>
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-8">
-                
-                <div className="grid sm:grid-cols-2 gap-8">
+              <h3 className="text-2xl font-serif text-[#1C1C1C] mb-6">Request a Proposal</h3>
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
+
+                <div className="grid sm:grid-cols-2 gap-5">
                   <InputField label="Full Name *" error={errors.name?.message}>
-                    <input {...register('name')} className={inputCls} placeholder="John Doe" />
+                    <input {...register('name')} className={inputCls} placeholder="Full Name" />
                   </InputField>
                   <InputField label="Mobile Number *" error={errors.phone?.message}>
-                    <input {...register('phone')} className={inputCls} placeholder="9603565222" type="tel" maxLength={10} />
+                    <input {...register('phone')} className={inputCls} placeholder="Mobile Number" type="tel" maxLength={10} />
                   </InputField>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <InputField label="Email (Optional)" error={errors.email?.message}>
-                    <input {...register('email')} className={inputCls} placeholder="you@example.com" type="email" />
+                    <input {...register('email')} className={inputCls} placeholder="Email" type="email" />
                   </InputField>
                   <InputField label="City *" error={errors.city?.message}>
-                    <input {...register('city')} className={inputCls} placeholder="Vizianagaram" />
+                    <input {...register('city')} className={inputCls} placeholder="City" />
                   </InputField>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <InputField label="Monthly Bill *" error={errors.monthlyBill?.message}>
                     <select {...register('monthlyBill')} className={selectCls}>
-                      <option value="">Select range</option>
+                      <option value="">Monthly Bill</option>
                       {BILL_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                     </select>
                   </InputField>
                   <InputField label="System Type *" error={errors.systemType?.message}>
                     <select {...register('systemType')} className={selectCls}>
-                      <option value="">Select type</option>
+                      <option value="">System Type</option>
                       {SYSTEM_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                     </select>
                   </InputField>
@@ -168,16 +168,16 @@ export function Contact() {
                   <textarea
                     {...register('message')}
                     className={`${inputCls} h-24 py-3 resize-none`}
-                    placeholder="Tell us about your roof space, requirements, etc..."
+                    placeholder="Additional Details"
                   />
                 </InputField>
 
                 <Button
                   type="submit"
                   variant="primary"
-                  size="lg"
+                  size="md"
                   isLoading={isSubmitting}
-                  className="w-full mt-4"
+                  className="w-full mt-2"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Inquiry'}
                 </Button>

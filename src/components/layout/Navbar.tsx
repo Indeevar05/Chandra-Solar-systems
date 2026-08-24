@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import { cn, getWhatsAppUrl } from '@/lib/utils'
 import { SITE, NAV_LINKS } from '@/constants'
 import { useScrollY } from '@/hooks/useScrollProgress'
 import { Button } from '@/components/shared/Button'
 import {
-  MenuIcon,
-  CloseIcon,
   PhoneIcon,
   WhatsAppIcon,
-  SolarPanelIcon,
 } from '@/components/icons'
 import { mobileMenuVariants, mobileMenuLinkVariants } from '@/lib/animations'
 
@@ -41,36 +38,29 @@ export function Navbar() {
           'fixed top-0 left-0 right-0 z-[100]',
           'transition-all duration-500',
           'bg-white border-b border-[#E5E5E5]',
-          isScrolled ? 'py-4 shadow-sm' : 'py-6'
+          isScrolled ? 'py-3 shadow-sm' : 'py-4'
         )}
         role="banner"
       >
-        <div className="container-custom flex items-center justify-between">
-          {}
+        <div className="container-custom flex items-center justify-between gap-8">
           <a
             href="/"
-            className="flex items-center gap-3 group focus-visible:outline-none"
+            className="flex items-center group focus-visible:outline-none"
             aria-label="Chandra Solar Systems — Home"
           >
-          <div className="w-10 h-10 flex items-center justify-center text-[#1C1C1C]">
-              <SolarPanelIcon size={28} strokeWidth={1} />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-base font-medium tracking-[0.25em] uppercase text-[#1C1C1C]">
-                Chandra
-              </span>
-              <span className="text-[9px] font-light tracking-[0.35em] uppercase text-[#737373]">
-                Solar Systems
-              </span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Chandra Solar Systems"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </a>
 
-          <nav className="hidden lg:flex items-center gap-10" aria-label="Primary navigation">
+          <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
             {NAV_LINKS.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs uppercase tracking-widest font-medium animated-underline transition-colors duration-300 text-[#737373] hover:text-[#1C1C1C]"
+                className="text-xs uppercase tracking-widest font-medium animated-underline transition-colors duration-300 text-[#5C6B62] hover:text-[#2D6A4F]"
               >
                 {link.label}
               </a>
@@ -80,13 +70,13 @@ export function Navbar() {
           {}
           <div className="hidden lg:flex items-center gap-6">
             <a
-              href={`https://wa.me/${SITE.whatsappRaw}`}
+              href={getWhatsAppUrl(SITE.whatsappMessage, SITE.whatsappRaw)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs uppercase tracking-widest font-medium transition-colors duration-300 flex items-center gap-2 animated-underline text-[#737373] hover:text-[#25D366]"
+              className="text-[11px] uppercase tracking-widest font-medium transition-colors duration-300 flex items-center gap-2 animated-underline text-[#737373] hover:text-[#25D366] leading-none"
               aria-label="Chat on WhatsApp"
             >
-              <WhatsAppIcon size={14} />
+              <WhatsAppIcon size={13} />
               <span>WhatsApp</span>
             </a>
 
@@ -102,7 +92,7 @@ export function Navbar() {
 
           {}
           <button
-            className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 transition-colors cursor-pointer text-[#1C1C1C]"
+            className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 transition-colors cursor-pointer text-[#1C1C1C]"
             onClick={() => setMobileOpen(prev => !prev)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -126,9 +116,9 @@ export function Navbar() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-[99] bg-white flex flex-col px-6 pt-32 pb-12 overflow-y-auto"
+            className="fixed inset-0 z-[99] bg-white flex flex-col px-6 pt-24 pb-10 overflow-y-auto"
           >
-            <nav className="relative flex flex-col gap-6" aria-label="Mobile navigation">
+            <nav className="relative flex flex-col gap-1" aria-label="Mobile navigation">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -138,7 +128,7 @@ export function Navbar() {
                   initial="closed"
                   animate="open"
                   onClick={() => setMobileOpen(false)}
-                  className="text-[#1C1C1C] text-2xl font-serif tracking-tight flex items-center justify-between border-b border-[#E5E5E5] pb-4 group"
+                  className="text-[#1C1C1C] text-xl font-serif tracking-tight flex items-center justify-between border-b border-[#E5E5E5] py-4 group"
                 >
                   <span>{link.label}</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-[#E5E5E5] group-hover:text-[#1C1C1C] transition-colors">
@@ -148,23 +138,23 @@ export function Navbar() {
               ))}
             </nav>
 
-            <div className="mt-auto flex flex-col gap-4 pt-12">
+            <div className="mt-auto flex flex-col gap-3 pt-8">
               <a
-                href={`https://wa.me/${SITE.whatsappRaw}`}
+                href={getWhatsAppUrl(SITE.whatsappMessage, SITE.whatsappRaw)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 h-14 bg-transparent border border-[#25D366] text-[#25D366] text-sm font-medium uppercase tracking-widest transition-colors hover:bg-[#25D366] hover:text-white"
+                className="inline-flex items-center justify-center gap-2 h-11 px-6 bg-transparent border border-[#25D366] text-[#25D366] text-[11px] font-medium uppercase tracking-[0.18em] leading-none transition-colors hover:bg-[#25D366] hover:text-white"
                 onClick={() => setMobileOpen(false)}
               >
-                <WhatsAppIcon size={16} />
+                <WhatsAppIcon size={14} />
                 WhatsApp
               </a>
               <a
                 href={`tel:${SITE.phoneRaw}`}
-                className="flex items-center justify-center gap-3 h-14 bg-[#1C1C1C] text-white text-sm font-medium uppercase tracking-widest"
+                className="inline-flex items-center justify-center gap-2 h-11 px-6 bg-[#1C1C1C] text-white text-sm font-medium tabular-nums tracking-normal leading-none"
                 onClick={() => setMobileOpen(false)}
               >
-                <PhoneIcon size={16} strokeWidth={1.5} />
+                <PhoneIcon size={14} strokeWidth={1.5} />
                 {SITE.phone}
               </a>
             </div>

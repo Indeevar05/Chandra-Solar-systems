@@ -52,6 +52,19 @@ export function SolarPanelIcon(props: IconProps) {
   )
 }
 
+/** Premium Tier-1 panels — sun + panel mark */
+export function PremiumPanelsIcon(props: IconProps) {
+  return (
+    <SVGIcon {...props}>
+      <circle cx="12" cy="4.5" r="2.25" />
+      <path d="M12 1.25v1M9.2 2.4l.7.7M14.8 2.4l-.7.7" />
+      <rect x="3" y="9" width="18" height="11" rx="1.5" />
+      <path d="M3 12.5h18M3 16h18M9 9v11M15 9v11" />
+      <path d="M8 21.5h8" />
+    </SVGIcon>
+  )
+}
+
 export function SunIcon(props: IconProps) {
   return (
     <SVGIcon {...props}>
@@ -108,10 +121,13 @@ export function ToolIcon(props: IconProps) {
 export function ChartIcon(props: IconProps) {
   return (
     <SVGIcon {...props}>
-      <line x1="18" y1="20" x2="18" y2="10" />
-      <line x1="12" y1="20" x2="12" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="14" />
-      <line x1="2" y1="20" x2="22" y2="20" />
+      <path d="M3 20h18" />
+      <path d="M6 16v-4" />
+      <path d="M10 16V8" />
+      <path d="M14 16v-6" />
+      <path d="M18 16V5" />
+      <path d="M4 11l5-4 4 2 6-5" />
+      <circle cx="19" cy="4" r="1.2" fill="currentColor" stroke="none" />
     </SVGIcon>
   )
 }

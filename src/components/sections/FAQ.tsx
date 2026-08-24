@@ -17,7 +17,7 @@ function FAQItem({ item, index }: { item: typeof FAQ_ITEMS[number]; index: numbe
     >
       <button
         onClick={() => setIsOpen(prev => !prev)}
-        className="w-full flex items-center justify-between gap-6 py-7 text-left cursor-pointer group"
+        className="w-full flex items-center justify-between gap-6 py-5 text-left cursor-pointer group"
         aria-expanded={isOpen}
         id={`faq-btn-${item.id}`}
         aria-controls={`faq-panel-${item.id}`}
@@ -49,7 +49,7 @@ function FAQItem({ item, index }: { item: typeof FAQ_ITEMS[number]; index: numbe
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="pb-7 pr-14 text-[#737373] font-light leading-relaxed">
+            <div className="pb-5 pr-12 text-[#737373] font-light leading-relaxed text-sm">
               {item.answer}
             </div>
           </motion.div>
@@ -63,17 +63,17 @@ export function FAQ() {
   return (
     <section id="faq" className="section bg-white">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
-              <span className="text-[#1C1C1C] text-[10px] font-medium tracking-[0.3em] uppercase block mb-6">
+              <span className="text-[#1C1C1C] text-[10px] font-medium tracking-[0.3em] uppercase block mb-3">
                 FAQ
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-[#1C1C1C] leading-tight mb-8">
+              <h2 className="text-3xl md:text-4xl font-serif text-[#1C1C1C] leading-tight mb-4">
                 Common <span className="italic font-light text-[#737373]">Questions</span>
               </h2>
-              <p className="text-[#737373] font-light leading-relaxed mb-10">
+              <p className="text-[#737373] font-light leading-relaxed mb-6 text-sm">
                 Everything you need to know about going solar in Andhra Pradesh — from subsidies to installation to long-term performance.
               </p>
               <a

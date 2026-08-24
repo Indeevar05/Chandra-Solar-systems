@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE } from '@/constants'
 import { PhoneIcon, WhatsAppIcon, ArrowUpIcon } from '@/components/icons'
 import { useScrollY } from '@/hooks/useScrollProgress'
-import { openWhatsApp } from '@/lib/utils'
+import { getWhatsAppUrl } from '@/lib/utils'
 
 export function FloatingButtons() {
   const scrollY = useScrollY()
@@ -15,11 +15,10 @@ export function FloatingButtons() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-[90] flex flex-col items-end gap-3"
+      className="fixed bottom-6 right-6 z-[90] flex flex-col items-center gap-3.5"
       role="region"
       aria-label="Quick contact buttons"
     >
-      {}
       <AnimatePresence>
         {showBackToTop && (
           <motion.button
@@ -28,46 +27,45 @@ export function FloatingButtons() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             onClick={scrollToTop}
-            className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#64748B] dark:text-slate-400 shadow-md hover:shadow-xl hover:text-[#0F172A] dark:hover:text-white hover:-translate-y-1 transition-all cursor-pointer"
+            className="w-11 h-11 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[#737373] shadow-sm hover:text-[#1C1C1C] hover:-translate-y-0.5 transition-all cursor-pointer"
             aria-label="Back to top"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
           >
-            <ArrowUpIcon size={18} strokeWidth={2} />
+            <ArrowUpIcon size={16} strokeWidth={2} />
           </motion.button>
         )}
       </AnimatePresence>
 
-      {}
       <motion.a
         href={`tel:${SITE.phoneRaw}`}
-        className="w-14 h-14 rounded-full bg-[#0F172A] flex items-center justify-center text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
+        className="w-11 h-11 rounded-full bg-[#14261C] flex items-center justify-center text-white shadow-md hover:-translate-y-0.5 transition-all"
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
         aria-label={`Call us at ${SITE.phone}`}
         title={`Call: ${SITE.phone}`}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.2 }}
       >
-        <PhoneIcon size={20} strokeWidth={2} />
+        <PhoneIcon size={16} strokeWidth={2} />
       </motion.a>
 
-      {}
-      <motion.button
-        onClick={() => openWhatsApp(SITE.whatsappRaw, 'Hi! I\'m interested in solar installation. Please send me more details.')}
-        className="w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 pulse-glow transition-all cursor-pointer"
-        style={{ '--tw-shadow-color': 'rgba(37, 211, 102, 0.3)' } as React.CSSProperties}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+      <motion.a
+        href={getWhatsAppUrl(SITE.whatsappMessage, SITE.whatsappRaw)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-md hover:-translate-y-0.5 transition-all"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
         aria-label={`Chat on WhatsApp: ${SITE.whatsapp}`}
         title={`WhatsApp: ${SITE.whatsapp}`}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
       >
-        <WhatsAppIcon size={24} />
-      </motion.button>
+        <WhatsAppIcon size={18} />
+      </motion.a>
     </div>
   )
 }

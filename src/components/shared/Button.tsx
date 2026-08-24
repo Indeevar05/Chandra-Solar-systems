@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion, type HTMLMotionProps } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'accent'
@@ -20,36 +19,36 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: [
-    'bg-[#1C1C1C] text-white',
-    'hover:bg-[#333333]',
+    'bg-[#14261C] text-white',
+    'hover:bg-[#1B4332]',
     'border border-transparent',
   ].join(' '),
   accent: [
-    'bg-[#B85B3F] text-white',
-    'hover:bg-[#9E4D35]',
+    'bg-[#2D6A4F] text-white',
+    'hover:bg-[#1B4332]',
     'border border-transparent',
   ].join(' '),
   secondary: [
-    'bg-transparent text-[#1C1C1C]',
+    'bg-transparent text-[#14261C]',
     'hover:bg-black/5',
-    'border border-[#E5E5E5]',
+    'border border-[#D8E0DA]',
   ].join(' '),
   ghost: [
-    'bg-transparent text-[#1C1C1C]',
+    'bg-transparent text-[#14261C]',
     'hover:bg-black/5',
     'border border-transparent',
   ].join(' '),
   outline: [
-    'bg-transparent text-[#1C1C1C]',
-    'hover:bg-[#1C1C1C] hover:text-white',
-    'border border-[#1C1C1C]',
+    'bg-transparent text-[#14261C]',
+    'hover:bg-[#14261C] hover:text-white',
+    'border border-[#14261C]',
   ].join(' '),
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'h-11 px-8 text-xs gap-2 uppercase tracking-[0.2em]',
-  md: 'h-[52px] px-10 text-xs uppercase tracking-[0.2em] gap-2',
-  lg: 'h-[64px] px-14 text-xs uppercase tracking-[0.25em] gap-3',
+  sm: 'h-10 px-6 text-[10px] uppercase tracking-[0.16em] gap-2',
+  md: 'h-11 px-8 text-[11px] uppercase tracking-[0.18em] gap-2',
+  lg: 'h-12 px-10 text-[11px] uppercase tracking-[0.2em] gap-2.5',
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -71,14 +70,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles = cn(
-      'inline-flex items-center justify-center font-medium rounded-none',
+      'inline-flex items-center justify-center font-medium rounded-none leading-none',
       'transition-colors duration-500 cursor-pointer',
       'select-none whitespace-nowrap shrink-0',
-      'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2',
+      'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2D6A4F] focus-visible:ring-offset-2',
       'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
       variantStyles[variant],
       sizeStyles[size],
       className
+    )
+
+    const content = isLoading ? (
+      <span className="inline-flex items-center gap-2 leading-none">
+        <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        Loading...
+      </span>
+    ) : (
+      children
     )
 
     if (Tag === 'a' && href) {
@@ -89,18 +99,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           rel={rel}
           className={baseStyles}
         >
-          {leftIcon && <span>{leftIcon}</span>}
-          {isLoading ? (
-            <span className="flex items-center gap-2">
-              <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-              </svg>
-              Loading...
-            </span>
-          ) : (
-            children
-          )}
-          {rightIcon && <span>{rightIcon}</span>}
+          {leftIcon && <span className="inline-flex items-center justify-center shrink-0">{leftIcon}</span>}
+          {content}
+          {rightIcon && <span className="inline-flex items-center justify-center shrink-0">{rightIcon}</span>}
         </a>
       )
     }
@@ -111,18 +112,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={baseStyles}
         {...props}
       >
-        {leftIcon && <span>{leftIcon}</span>}
-        {isLoading ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-            </svg>
-            Loading...
-          </span>
-        ) : (
-          children
-        )}
-        {rightIcon && <span>{rightIcon}</span>}
+        {leftIcon && <span className="inline-flex items-center justify-center shrink-0">{leftIcon}</span>}
+        {content}
+        {rightIcon && <span className="inline-flex items-center justify-center shrink-0">{rightIcon}</span>}
       </button>
     )
   }

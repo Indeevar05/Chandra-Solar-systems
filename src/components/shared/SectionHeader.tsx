@@ -40,12 +40,12 @@ export function SectionHeader({
     >
       <motion.h2
         variants={fadeUp}
-        className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#1C1C1C] leading-[1.1] tracking-tight"
+        className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif text-[#1C1C1C] leading-[1.15] tracking-tight"
       >
         {highlight ? (
           <>
             {titleParts[0]}
-            <span className="text-[#B85B3F] italic">{highlight}</span>
+            <span className="text-[#2D6A4F] italic">{highlight}</span>
             {titleParts[1]}
           </>
         ) : (
@@ -56,8 +56,8 @@ export function SectionHeader({
       {subtitle && (
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-lg text-[#737373] leading-relaxed max-w-2xl font-light"
-          style={align === 'center' ? { margin: '1.5rem auto 0' } : {}}
+          className="mt-5 text-base text-[#737373] leading-relaxed max-w-2xl font-light"
+          style={align === 'center' ? { margin: '1.25rem auto 0' } : {}}
         >
           {subtitle}
         </motion.p>

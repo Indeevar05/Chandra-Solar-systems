@@ -22,7 +22,7 @@ const Contact           = lazy(() => import('@/components/sections/Contact').the
 function SectionSkeleton() {
   return (
     <div className="section flex items-center justify-center" aria-hidden="true">
-      <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#FDB813] animate-spin" />
+      <div className="w-8 h-8 rounded-full border-2 border-[#D8E0DA] border-t-[#3D8B6E] animate-spin" />
     </div>
   )
 }
@@ -32,7 +32,7 @@ function AppInner() {
   useLenis() 
 
   return (
-    <div className="relative bg-[#F9F9F6] min-h-screen">
+    <div className="relative bg-[#F4F7F4] min-h-screen">
       {}
       <FloatingButtons />
 
