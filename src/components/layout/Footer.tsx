@@ -136,7 +136,7 @@ export function Footer() {
                 aria-label={label}
                 className="text-[#737373] hover:text-white transition-colors duration-300"
               >
-                <Icon size={20} strokeWidth={1.5} />
+                <Icon size={20} />
               </a>
             ))}
           </div>
